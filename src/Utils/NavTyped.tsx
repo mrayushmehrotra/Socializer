@@ -12,10 +12,10 @@ const TypewriterTitle = () => {
       }}
       onInit={(typewriter) => {
         typewriter
-          .typeString("Companion")
+          .typeString("Youtube")
           .pauseFor(1000)
           .deleteAll()
-          .typeString(" Engineer.")
+          .typeString(" Instagram")
           .start();
       }}
     />

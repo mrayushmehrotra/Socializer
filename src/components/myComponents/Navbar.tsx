@@ -16,6 +16,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import NavTyped from "@/Utils/NavTyped";
 const Navbar = () => {
   const { isSignedIn } = useUser();
   const [isUser, setIsUser] = useState<boolean>(false);
@@ -27,7 +28,12 @@ const Navbar = () => {
   return (
     <div className="flex p-7 text-white items-center justify-between">
       <Link href="/">
-        <h1 className="text-xl font-bold">Sathi</h1>
+        <div className="flex">
+          <h1 className="text-xl font-bold">Sathi&nbsp;|&nbsp;</h1>
+          <h1 className="text-xl font-bold">
+            <NavTyped />{" "}
+          </h1>
+        </div>
       </Link>
       <ul className="flex space-x-4 items-center ">
         <li>

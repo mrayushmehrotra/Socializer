@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -10,9 +9,7 @@ import ReactMarkdown from "react-markdown";
 
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -96,26 +93,29 @@ const Page = () => {
       <div className="mt-6">
         {loading && <Skeleton className="w-full h-20" />}
         {/* Render a new card for each response */}
-          <main className=" flex container items-center space-x-4 p-9">
-        {responses.map((response, index) => (
-          <Card className="w-[450px] text-white hover:text-white mt-4" key={index}>
-            <CardHeader>
-              <CardTitle className="text-2xl text-zinc-200">
-                {response.userInput}
-              </CardTitle>
-              <br />
-              <CardDescription className="text-zinc-400">
-                <ReactMarkdown>{response.botResponse}</ReactMarkdown>
-              </CardDescription>
-            </CardHeader>
-            {/* <CardFooter className="flex justify-between"> */}
-            {/*   <Button className="bg-white text-black rounded-md border border-white p-4 hover:text-white"> */}
-            {/*     <LiaTelegram /> */}
-            {/*   </Button> */}
-            {/* </CardFooter> */}
-          </Card>
-        ))}
-          </main>
+        <main className=" flex container items-center space-x-4 p-9">
+          {responses.map((response, index) => (
+            <Card
+              className="w-[450px] text-white hover:text-white mt-4"
+              key={index}
+            >
+              <CardHeader>
+                <CardTitle className="text-2xl text-zinc-200">
+                  {response.userInput}
+                </CardTitle>
+                <br />
+                <CardDescription className="text-zinc-400">
+                  <ReactMarkdown>{response.botResponse}</ReactMarkdown>
+                </CardDescription>
+              </CardHeader>
+              {/* <CardFooter className="flex justify-between"> */}
+              {/*   <Button className="bg-white text-black rounded-md border border-white p-4 hover:text-white"> */}
+              {/*     <LiaTelegram /> */}
+              {/*   </Button> */}
+              {/* </CardFooter> */}
+            </Card>
+          ))}
+        </main>
       </div>
     </div>
   );

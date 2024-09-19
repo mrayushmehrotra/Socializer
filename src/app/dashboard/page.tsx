@@ -18,21 +18,24 @@ const Page = () => {
     {
       title: {
         main: "Craft Your SEO-Optimized Title",
-        description: "Unlock the potential of your content with a captivating SEO-friendly title that draws viewers to your YouTube videos,posts, and other social media platforms.",
+        description:
+          "Unlock the potential of your content with a captivating SEO-friendly title that draws viewers to your YouTube videos,posts, and other social media platforms.",
       },
       goto: "/dashboard/getTitle",
     },
     {
       title: {
         main: "Engaging SEO Description",
-        description: "Boost your visibility online with an engaging SEO-friendly description that highlights your content's value, helping attract more viewers across platforms.",
+        description:
+          "Boost your visibility online with an engaging SEO-friendly description that highlights your content's value, helping attract more viewers across platforms.",
       },
       goto: "/dashboard/getDescription",
     },
     {
       title: {
         main: "Generate Trending Hashtags",
-        description: "Enhance your reach and discoverability by generating effective SEO-friendly hashtags that resonate with your target audience on social media.",
+        description:
+          "Enhance your reach and discoverability by generating effective SEO-friendly hashtags that resonate with your target audience on social media.",
       },
       goto: "/dashboard/getHashtags",
     },
@@ -43,9 +46,14 @@ const Page = () => {
       {data.map((item, index) => (
         <Card key={index} className="w-[450px] text-white hover:text-white">
           <CardHeader>
-            <CardTitle className="text-2xl text-zinc-200">{item.title.main}</CardTitle>
+            <CardTitle className="text-2xl text-zinc-200">
+              {item.title.main}
+            </CardTitle>
             <br />
-            <CardDescription className="text-zinc-400" dangerouslySetInnerHTML={{ __html: item.title.description }} />
+            <CardDescription
+              className="text-zinc-400"
+              dangerouslySetInnerHTML={{ __html: item.title.description }}
+            />
           </CardHeader>
           <CardFooter className="flex justify-between">
             <Button className="bg-white text-black rounded-md border border-white p-4 hover:text-white">

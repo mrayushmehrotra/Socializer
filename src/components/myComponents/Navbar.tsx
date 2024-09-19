@@ -15,14 +15,16 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-
+import { currentUser } from "@clerk/nextjs/server";
 import NavTyped from "@/Utils/NavTyped";
+
 const Navbar = () => {
-  const { isSignedIn } = useUser();
+  const { isSignedIn } = useUser(); // Ensure you're using `useUser` to get isSignedIn
   const [isUser, setIsUser] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsUser(isSignedIn);
+    // Ensure that isSignedIn is boolean or default to false
+    setIsUser(isSignedIn ?? false);
   }, [isSignedIn]);
 
   return (

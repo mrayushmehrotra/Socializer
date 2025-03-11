@@ -12,5 +12,10 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: #292a2d;
+  background: linear-gradient(
+    to bottom right,
+    #11131d 0%,
+    #11131d 50%,
+    #11141c 100%
+  );
 }

@@ -5,6 +5,7 @@ const page = () => {
   return (
     <div className="flex items-center justify-center glassmorphism-auth h-screen w-full">
       <SignIn
+        fallbackRedirectUrl="/dashboard"
         appearance={{
           baseTheme: dark,
           variables: {

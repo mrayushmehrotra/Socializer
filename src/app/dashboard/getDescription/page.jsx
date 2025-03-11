@@ -24,8 +24,11 @@ const Page = () => {
     setLoading(true);
 
     try {
-      setInput((prev)=> {...prev + " }")
-      const response = await axios.post("/api/gemini", { prompt: input });
+      const response = await axios.post("/api/gemini", {
+        prompt:
+          input +
+          "you are the best youtuber in the world yeah, you google gemini you have to help this guy for creating the best Description so that he can reach more audience in less time and his channel should keep growing",
+      });
       const botMessage = {
         text: response.data.success
           ? response.data.data

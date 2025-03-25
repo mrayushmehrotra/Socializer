@@ -16,7 +16,7 @@ const Navbar = () => {
   }, [isSignedIn]);
 
   return (
-    <nav className="flex items-center space-x-6 px-8 py-3 text-white shadow-md rounded-full">
+    <nav className="flex items-center space-x-6 px-8 py-4 mt-8 text-white shadow-md rounded-full">
       {/* Logo Section */}
       <div className="flex items-center">
         <Image
@@ -28,7 +28,7 @@ const Navbar = () => {
         />
       </div>
 
-      <div className="flex w-full backdrop-blur-2xl bg-opacity-35 bg-zinc-700 px-4 py-2 rounded-xl items-center justify-between">
+      <div className="flex w-full backdrop-blur-2xl bg-opacity-35 bg-zinc-700 px-4 py-4 rounded-xl items-center justify-between">
         {/* Navigation Links with Group Hover */}
         <ul className="flex space-x-6 text-sm font-medium group">
           {[
@@ -41,7 +41,7 @@ const Navbar = () => {
               <Link
                 draggable={false}
                 href={item.path}
-                className="px-2 py-1 rounded-md transition-all duration-200  hover:text-gray-300"
+                className="px-2 py-1 rounded-md text-md  transition-all duration-200  hover:text-gray-300"
               >
                 {item.name}
               </Link>
@@ -50,7 +50,7 @@ const Navbar = () => {
         </ul>
 
         {/* Right Section with Group Hover */}
-        <ul className="flex items-center space-x-6 text-sm font-medium group">
+        <ul className="flex items-center space-x-6 text-md font-medium group">
           {[
             { name: "About us", path: "/about" },
             { name: "Careers", path: "/demo" },
@@ -73,9 +73,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link href={isUser ? "/dashboard" : "/get-started"}>
-              <Button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+              <button className=" bg-[#BAD7F5] hover:scale-95  text-black px-4 py-2 rounded-xl">
                 {isUser ? "Dashboard" : "Get Started"}
-              </Button>
+              </button>
             </Link>
           </li>
         </ul>

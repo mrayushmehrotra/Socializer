@@ -1,28 +1,28 @@
 import React from "react";
 
 const Footer = () => {
+  // bg-[#0D111B]
   return (
-    <div className="w-full p-12 bg-[#0D111B] text-white py-10 px-5">
+    <div className="w-full bg-red-400  p-12  text-white py-10 px-5">
       <div className="max-w-7xl mx-auto flex flex-wrap  justify-between gap-8">
-        
         <div className="flex  items-center justify-center">
           <div className="w-full md:w-1/4">
             <ul className="mt-4 flex flex-col gap-2">
-              
-          <h1 className="text-3xl font-bold">
-            vid<span className="text-blue-500">IQ</span>
-          </h1>
+              <h1 className="text-3xl font-bold">
+                Socializer.<span className="text-blue-500">ai</span>
+              </h1>
               <li>
                 <a href="#">
-          <p className="mt-4 w-[60%] text-sm leading-6">
-            Our mission is to empower every video creator with the insights and
-            inspiration they need to grow. 
-          </p>
-          <p className="mt-6 text-xs">
-            &copy; 2024 vidIQ. All Rights Reserved.
-          </p>Testimonials</a>
+                  <p className="mt-4 w-[60%] text-sm leading-6">
+                    Our mission is to empower every video creator with the
+                    insights and inspiration they need to grow.
+                  </p>
+                  <p className="mt-6 text-xs">
+                    &copy; 2024 Socializer.ai. All Rights Reserved.
+                  </p>
+                  Testimonials
+                </a>
               </li>
-            
             </ul>
           </div>
 

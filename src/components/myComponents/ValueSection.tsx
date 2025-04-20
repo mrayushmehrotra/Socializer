@@ -3,7 +3,7 @@ import React from "react";
 
 const ValueSection = () => {
   return (
-    <section className="w-full  py-12 md:py-24">
+    <section className="w-full  py-12 md:py-24" id="demo">
       {/* Heading */}
       <div className="container mx-auto px-4">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-2 md:mb-4 text-[#D3EAF2]">

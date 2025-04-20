@@ -73,9 +73,10 @@ export function ContainerTextFlip({
         ref={textRef}
         layoutId={`word-div-${words[currentWordIndex]}-${id}`}
       >
-        <motion.div className="bg-[#BAD7F5] px-6 py-2 rounded-xl  text-black inline-block">
+        <motion.div className="bg-transparent px-6 py-2 rounded-xl   inline-block">
           {words[currentWordIndex].split("").map((letter, index) => (
             <motion.span
+              className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 "
               key={index}
               initial={{
                 opacity: 0,

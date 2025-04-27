@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaArrowUp } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { SecondNav } from "@/components/myComponents/nav2";
 import axios from "axios";
 
 const Page = () => {
@@ -48,43 +49,46 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#101418] text-white">
-      <h1 className="text-4xl font-serif  font-semibold text-center p-5  ">
-        Generate an SEO Friendly Hashtags for your next post{" "}
-      </h1>
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
-          >
+    <>
+      <SecondNav />
+      <div className="flex flex-col h-screen bg-[#101418] text-white">
+        <h1 className="text-4xl font-serif  font-semibold text-center p-5  ">
+          Generate an SEO Friendly Hashtags for your next post{" "}
+        </h1>
+        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+          {messages.map((msg, index) => (
             <div
-              className={`p-4 rounded-xl max-w-lg text-sm shadow-md ${msg.sender === "user" ? "bg-blue-600" : "bg-gray-700"}`}
+              key={index}
+              className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
             >
-              {msg.text}
+              <div
+                className={`p-4 rounded-xl max-w-lg text-sm shadow-md ${msg.sender === "user" ? "bg-blue-600" : "bg-gray-700"}`}
+              >
+                {msg.text}
+              </div>
             </div>
-          </div>
-        ))}
-        {loading && <Skeleton className="h-6 w-32 rounded-xl bg-gray-700" />}
-        <div ref={chatRef}></div>
+          ))}
+          {loading && <Skeleton className="h-6 w-32 rounded-xl bg-gray-700" />}
+          <div ref={chatRef}></div>
+        </div>
+        <div className="p-4 border-t border-gray-700 bg-[#12171d] rounded-xl  flex items-center gap-2">
+          <Input
+            className="flex-1 p-3 bg-gray-800 border border-gray-700 rounded-xl text-black placeholder-gray-500 focus:outline-none"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+            placeholder="Type a message..."
+          />
+          <button
+            className="p-3 bg-blue-600 rounded-full text-white hover:bg-blue-500 disabled:opacity-50"
+            onClick={handleSendMessage}
+            disabled={loading}
+          >
+            <FaArrowUp className="text-lg" />
+          </button>
+        </div>
       </div>
-      <div className="p-4 border-t border-gray-700 bg-[#12171d] rounded-xl  flex items-center gap-2">
-        <Input
-          className="flex-1 p-3 bg-gray-800 border border-gray-700 rounded-xl text-black placeholder-gray-500 focus:outline-none"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-          placeholder="Type a message..."
-        />
-        <button
-          className="p-3 bg-blue-600 rounded-full text-white hover:bg-blue-500 disabled:opacity-50"
-          onClick={handleSendMessage}
-          disabled={loading}
-        >
-          <FaArrowUp className="text-lg" />
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 

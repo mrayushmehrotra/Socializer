@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
@@ -18,17 +18,17 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Enterprise", path: "/demo" },
-    { name: "Pricing", path: "/demo" },
-    { name: "Customers", path: "/demo" },
+    { name: "Enterprise", path: "" },
+    { name: "Pricing", path: "" },
+    { name: "Customers", path: "" },
   ];
 
   const rightLinks = [
     { name: "AboutUs", path: "#about" },
     { name: "Demo", path: "#demo" },
-    { name: "Blog", path: "/demo" },
+    { name: "Blog", path: "" },
     { name: "Contact", path: "#footer" },
-    { name: "Docs", path: "/demo" },
+    { name: "Docs", path: "" },
   ];
 
   return (
@@ -96,13 +96,13 @@ const Navbar = () => {
               {isUser ? (
                 <UserButton />
               ) : (
-                <Link href="/login" className="hidden lg:block">
+                <Link href="/sign-in" className="hidden lg:block">
                   Login
                 </Link>
               )}
             </li>
             <li>
-              <Link href={isUser ? "/dashboard" : "/get-started"}>
+              <Link href={isUser ? "/dashboard" : "sign-up"}>
                 <button className="bg-[#BAD7F5] hover:scale-95 text-black px-4 py-2 rounded-xl">
                   {isUser ? "Dashboard" : "Get Started"}
                 </button>
@@ -143,7 +143,7 @@ const Navbar = () => {
                     </Link>
                   )}
                   <Link
-                    href={isUser ? "/dashboard" : "/get-started"}
+                    href={isUser ? "/dashboard" : "/signup"}
                     onClick={() => setIsOpen(false)}
                   >
                     <button className="bg-[#BAD7F5] hover:scale-95 text-black px-4 py-2 rounded-xl">

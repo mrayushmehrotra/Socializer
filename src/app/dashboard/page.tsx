@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import DashboardCard from "@/components/myComponents/DashboardCard";
+import Navbar from "@/components/myComponents/Navbar";
 
 const Page = () => {
   const [loading, setLoading] = useState(true);
@@ -39,24 +40,27 @@ const Page = () => {
   ];
 
   return (
-    <div className="w-full p-12  flex justify-center">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-[80%]">
-        {loading
-          ? Data.map((_, index) => (
-              <div key={index} className="w-full max-w-md">
-                <Skeleton className="h-64 w-full rounded-lg" />
-              </div>
-            ))
-          : Data.map((item, key) => (
-              <DashboardCard
-                key={key}
-                about={item.title.description}
-                CardTitle={item.title.main}
-                link={item.goto}
-              />
-            ))}
+    <>
+      <Navbar />
+      <div className="w-full p-12  flex justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  ">
+          {loading
+            ? Data.map((_, index) => (
+                <div key={index} className="w-full max-w-md">
+                  <Skeleton className="h-64 w-full rounded-lg" />
+                </div>
+              ))
+            : Data.map((item, key) => (
+                <DashboardCard
+                  key={key}
+                  about={item.title.description}
+                  CardTitle={item.title.main}
+                  link={item.goto}
+                />
+              ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

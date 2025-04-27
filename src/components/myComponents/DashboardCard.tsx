@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -9,16 +8,11 @@ interface Props {
   link: string;
 }
 
-const DashboardCard = ({
-  CardTitle,
-  about,
-  link,
-}: Props) => {
+const DashboardCard = ({ CardTitle, about, link }: Props) => {
   return (
-    <div className="w-full sm:max-w-[70%]  md:max-w-md lg:max-w-lg border border-gray-600 bg-black rounded-xl shadow-lg overflow-hidden mx-auto transition-transform duration-300 hover:scale-105">
+    <div className="w-full sm:max-w-[70%]  md:max-w-md lg:max-w-lg border border-gray-600 bg-gradient-to-tr from-zinc-700 via-black to-slate-900 rounded-xl shadow-lg overflow-hidden mx-auto transition-transform duration-300 hover:scale-105">
       <div className="flex justify-between items-center px-4 sm:px-6 py-4">
         <div className="flex space-x-4">
-         
           <div>
             <div className="text-lg text-white font-semibold">{CardTitle}</div>
           </div>

@@ -1,32 +1,24 @@
-import React from "react";
-
 const Footer = () => {
-  // bg-[#0D111B]
   return (
-    <div className="w-full bg-red-400  p-12  text-white py-10 px-5">
-      <div className="max-w-7xl mx-auto flex flex-wrap  justify-between gap-8">
-        <div className="flex  items-center justify-center">
-          <div className="w-full md:w-1/4">
-            <ul className="mt-4 flex flex-col gap-2">
-              <h1 className="text-3xl font-bold">
-                Socializer.<span className="text-blue-500">ai</span>
-              </h1>
-              <li>
-                <a href="#">
-                  <p className="mt-4 w-[60%] text-sm leading-6">
-                    Our mission is to empower every video creator with the
-                    insights and inspiration they need to grow.
-                  </p>
-                  <p className="mt-6 text-xs">
-                    &copy; 2024 Socializer.ai. All Rights Reserved.
-                  </p>
-                  Testimonials
-                </a>
-              </li>
-            </ul>
-          </div>
+    <div className="w-full !bg-red-700   p-12 text-white py-10 px-5">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+        {/* Left Section - Brand Info */}
+        <div className="md:w-1/3">
+          <h1 className="text-3xl font-bold">
+            Socializer.<span className="text-blue-500">ai</span>
+          </h1>
+          <p className="mt-4 text-sm leading-6">
+            Our mission is to empower every video creator <br /> with the
+            insights and inspiration they need to grow.
+          </p>
+          <p className="mt-6 text-xs">
+            &copy; 2024 Socializer.ai. All Rights Reserved.
+          </p>
+        </div>
 
-          <div className="w-full md:w-1/4">
+        {/* Right Sections - Links */}
+        <div className="md:w-2/3 flex flex-col md:flex-row gap-8 justify-between">
+          <div>
             <h2 className="font-semibold text-lg">Product</h2>
             <ul className="mt-4 flex flex-col gap-2">
               <li>
@@ -53,7 +45,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="w-full md:w-1/4">
+          <div>
             <h2 className="font-semibold text-lg">Other</h2>
             <ul className="mt-4 flex flex-col gap-2">
               <li>
@@ -75,9 +67,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom Section */}
       <div className="mt-10 text-center">
         <h2 className="text-lg">Connect with us</h2>
-        <p className="mt-2">Call Sales 888-998-VIDIQ (8434)</p>
+        <p className="mt-2">Call Sales 888-998-SOCIALIZER.AI (8434)</p>
         <div className="mt-4 flex justify-center space-x-6">
           <a href="#">
             <i className="fab fa-youtube"></i>
@@ -95,7 +89,7 @@ const Footer = () => {
             <i className="fab fa-linkedin"></i>
           </a>
         </div>
-        <div className="mt-6 text-sm">
+        <div className="mt-6 text-sm  ">
           English Français Español Русский Português Türkçe Tiếng Việt
         </div>
       </div>

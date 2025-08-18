@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     apple: "/favicon.ico", // Note: Apple prefers PNG, consider adding apple-touch-icon.png later
   },
   manifest: "/site.webmanifest",
-  themeColor: "#ffffff", // Set your brand color
+  viewport: "100",
   category: "technology",
 };
 
@@ -71,6 +71,13 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <head>
+          <link
+            rel="icon"
+            type="image/x-icon"
+            href="../../public/favicon-16x16.png"
+          />
+        </head>
         <body className={inter.className}>
           <Toaster />
           {children}

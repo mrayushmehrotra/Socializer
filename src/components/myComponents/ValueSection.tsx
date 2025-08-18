@@ -29,6 +29,7 @@ const ValueSection = () => {
               {/* Screen content */}
               <div className="absolute inset-0 rounded-[30px] md:rounded-[36px] overflow-hidden">
                 <Image
+                  draggable="false"
                   src={item}
                   alt="App demonstration"
                   fill

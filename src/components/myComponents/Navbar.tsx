@@ -1,15 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
 import Link from "next/link";
-import { UserButton } from "@clerk/nextjs";
-import { useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { MoveUpRight, Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const { isSignedIn } = useUser();
-  const [isUser, setIsUser] = useState<boolean>(false);
+  const [isUser, setIsUser] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -18,50 +16,52 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Enterprise", path: "" },
     { name: "Pricing", path: "" },
     { name: "Customers", path: "" },
   ];
 
   const rightLinks = [
-    { name: "AboutUs", path: "#about" },
+    { name: "About Us", path: "#about" },
     { name: "Demo", path: "#demo" },
-    { name: "Blog", path: "" },
     { name: "Contact", path: "#footer" },
-    { name: "Docs", path: "" },
   ];
 
   return (
-    <nav className="w-full px-4 py-4 md:px-8 md:mt-8 text-white">
-      <div className="flex items-center justify-between max-w-7xl mx-auto">
-        {/* Logo and Mobile Menu Button */}
-        <div className="flex items-center">
+    <nav className="w-full fixed top-4 left-0 z-50 px-4 text-white">
+      <div
+        className="flex items-center justify-between max-w-7xl mx-auto 
+        bg-zinc-900/50 backdrop-blur-xl border border-white/10 
+        rounded-2xl shadow-lg px-6 py-3"
+      >
+        {/* Logo + Mobile Menu Button */}
+        <div className="flex items-center gap-3">
           <Image
             draggable={false}
             src="/logo.png"
             height={40}
             width={40}
             alt="logo"
+            className="rounded-lg"
           />
           <button
-            className="md:hidden ml-4"
+            className="md:hidden text-gray-300 hover:text-white transition"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex w-full backdrop-blur-2xl bg-opacity-35 bg-zinc-700 px-4 py-4 rounded-xl items-center justify-between ml-3">
-          {/* Navigation Links */}
+        {/* Desktop Nav */}
+        <div className="hidden md:flex w-full items-center justify-between ml-6">
+          {/* Left Links */}
           <ul className="flex space-x-6 text-sm font-medium">
             {navLinks.map((item, index) => (
               <li key={index}>
                 <Link
                   draggable={false}
                   href={item.path}
-                  className="px-1 py-1 rounded-md  text-md transition-all duration-200 hover:text-gray-300"
+                  className="px-2 py-1 text-md rounded-md transition-all duration-200 hover:text-gray-300"
                 >
                   {item.name}
                 </Link>
@@ -69,29 +69,31 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Right Section with Modified Hover Effect */}
-          <ul className="flex items-center   space-x-6 text-md font-medium">
+          {/* Right Links */}
+          <ul className="flex items-center space-x-6 text-md font-medium">
             {rightLinks.map((item, index) => (
               <li key={index} className="hidden lg:block">
                 <Link
                   draggable={false}
                   href={item.path}
-                  className="flex flex-row  items-center px-2 py-1 rounded-md transition-all duration-200 hover:text-gray-300 group"
+                  className="flex items-center px-2 py-1 rounded-md group transition-all duration-200 hover:text-gray-300"
                 >
                   <MoveUpRight
                     size={15}
-                    className="mr-1 opacity-0 group-hover:opacity-100 transition-all duration-200 -translate-x-2 group-hover:translate-x-0"
+                    className="mr-1 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0"
                   />
-                  <span className="group-hover:translate-x-2   transition-all duration-200">
+                  <span className="group-hover:translate-x-1 transition-all duration-300">
                     {item.name}
                   </span>
                   <MoveUpRight
                     size={15}
-                    className="ml-3 opacity-1000 group-hover:opacity-0 transition-all duration-200 -translate-x-2 group-hover:translate-x-2"
+                    className="ml-3 opacity-100 group-hover:opacity-0 transition-all duration-300"
                   />
                 </Link>
               </li>
             ))}
+
+            {/* Auth */}
             <li>
               {isUser ? (
                 <UserButton />
@@ -102,60 +104,66 @@ const Navbar = () => {
               )}
             </li>
             <li>
-              <Link href={isUser ? "/dashboard" : "sign-up"}>
-                <button className="bg-[#BAD7F5] hover:scale-95 text-black px-4 py-2 rounded-xl">
+              <Link href={isUser ? "/dashboard" : "/sign-up"}>
+                <button className="bg-[#BAD7F5] hover:scale-95 text-black px-4 py-2 rounded-xl shadow-md transition-all duration-200">
                   {isUser ? "Dashboard" : "Get Started"}
                 </button>
               </Link>
             </li>
           </ul>
         </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-zinc-800 bg-opacity-95 backdrop-blur-lg z-50 p-6 rounded-lg mx-4 shadow-xl">
-            <ul className="flex flex-col space-y-4">
-              {[...navLinks, ...rightLinks].map((item, index) => (
-                <li key={index}>
-                  <Link
-                    href={item.path}
-                    className="block px-4 py-3 rounded-md text-lg hover:bg-zinc-700 transition-all"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-4 border-t border-zinc-700">
-                <div className="flex items-center justify-between">
-                  {isUser ? (
-                    <div className="flex items-center">
-                      <UserButton />
-                      <span className="ml-2">Account</span>
-                    </div>
-                  ) : (
-                    <Link
-                      href="/sign-in"
-                      className="px-4 py-2 rounded-md hover:bg-zinc-700"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Login
-                    </Link>
-                  )}
-                  <Link
-                    href={isUser ? "/dashboard" : "/signup"}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <button className="bg-[#BAD7F5] hover:scale-95 text-black px-4 py-2 rounded-xl">
-                      {isUser ? "Dashboard" : "Get Started"}
-                    </button>
-                  </Link>
-                </div>
-              </li>
-            </ul>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Nav */}
+      {isOpen && (
+        <div
+          className="md:hidden mt-3 mx-4 absolute top-20 left-0 right-0 
+          bg-zinc-900/90 backdrop-blur-xl border border-white/10 
+          rounded-2xl shadow-xl z-40 p-6 transition-all duration-300"
+        >
+          <ul className="flex flex-col space-y-4">
+            {[...navLinks, ...rightLinks].map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.path}
+                  className="block px-4 py-3 rounded-md text-lg hover:bg-zinc-800/50 transition-all"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+
+            {/* Auth */}
+            <li className="pt-4 border-t border-zinc-700">
+              <div className="flex items-center justify-between">
+                {isUser ? (
+                  <div className="flex items-center">
+                    <UserButton />
+                    <span className="ml-2">Account</span>
+                  </div>
+                ) : (
+                  <Link
+                    href="/sign-in"
+                    className="px-4 py-2 rounded-md hover:bg-zinc-800/50"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Login
+                  </Link>
+                )}
+                <Link
+                  href={isUser ? "/dashboard" : "/sign-up"}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <button className="bg-[#BAD7F5] hover:scale-95 text-black px-4 py-2 rounded-xl shadow-md transition-all duration-200">
+                    {isUser ? "Dashboard" : "Get Started"}
+                  </button>
+                </Link>
+              </div>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

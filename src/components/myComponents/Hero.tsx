@@ -24,7 +24,9 @@ export function BackgroundBeamsDemo() {
         <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold w-fit ">
           Improve your reach on
           <span>
-            <ContainerTextFlip words={["Instagram", "Facebook", "X"]} />
+            <ContainerTextFlip
+              words={["Instagram", "Facebook", "Twitter(X)"]}
+            />
           </span>
         </h1>
         <p className="bg-gradient-to-r  text-transparent bg-clip-text    from-zinc-200 to-yellow-100  text-xl   text-neutral-500 max-w-lg   mx-auto my-2    text-center relative ">
@@ -37,8 +39,9 @@ export function BackgroundBeamsDemo() {
         </p>
         <input
           type="text"
-          placeholder="hi@creators.in"
-          className="  px-4 py-2 rounded-full   border-zinc-800  border  focus:ring-2 focus:ring-zinc-500  w-full relative z-10 mt-4  bg-neutral-950 placeholder:text-neutral-700"
+          disabled
+          placeholder="hi@socializer.in"
+          className="  px-4 py-2 rounded-full   border-zinc-800  border  focus:ring-2 focus:ring-zinc-500  w-full relative z-10 mt-4  bg-neutral-950 placeholder:text-neutral-700 text-white"
         />
       </div>
       <BackgroundBeams />

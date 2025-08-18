@@ -15,6 +15,7 @@ const Page = () => {
   const Data = [
     {
       title: {
+        origin: "Generate Title",
         main: "Craft Your SEO-Optimized Title",
         description:
           "Unlock the potential of your content with a captivating SEO-friendly title that draws viewers to your YouTube videos,posts, and other social media platforms.",
@@ -23,6 +24,8 @@ const Page = () => {
     },
     {
       title: {
+        origin: "Generate SEO",
+
         main: "Engaging SEO Description",
         description:
           "Boost your visibility online with an engaging SEO-friendly description that highlights your content's value, helping attract more viewers across platforms.",
@@ -31,6 +34,8 @@ const Page = () => {
     },
     {
       title: {
+        origin: "Generate Hashtags",
+
         main: "Generate Trending Hashtags",
         description:
           "Enhance your reach and discoverability by generating effective SEO-friendly hashtags that resonate with your target audience on social media.",
@@ -42,7 +47,7 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <div className="w-full p-12  flex justify-center">
+      <div className="w-full pt-24 p-2   flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  ">
           {loading
             ? Data.map((_, index) => (
@@ -52,6 +57,7 @@ const Page = () => {
               ))
             : Data.map((item, key) => (
                 <DashboardCard
+                  origin={item.title.origin}
                   key={key}
                   about={item.title.description}
                   CardTitle={item.title.main}

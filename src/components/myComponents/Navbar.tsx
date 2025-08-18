@@ -78,16 +78,25 @@ const Navbar = () => {
                   href={item.path}
                   className="flex items-center px-2 py-1 rounded-md group transition-all duration-200 hover:text-gray-300"
                 >
+                  {/* Left Arrow - slides in smoothly */}
                   <MoveUpRight
                     size={15}
-                    className="mr-1 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0"
+                    className="mr-1 opacity-0 -translate-x-2 -translate-y-2 rotate-[-15deg]
+               group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0
+               transition-all duration-75 ease-out"
                   />
-                  <span className="group-hover:translate-x-1 transition-all duration-300">
+
+                  {/* Text */}
+                  <span className="group-hover:translate-x-1 transition-all duration-300 ease-out">
                     {item.name}
                   </span>
+
+                  {/* Right Arrow - slides out smoothly */}
                   <MoveUpRight
                     size={15}
-                    className="ml-3 opacity-100 group-hover:opacity-0 transition-all duration-300"
+                    className="ml-3 opacity-100 translate-x-0 translate-y-0 rotate-0
+               group-hover:opacity-0 group-hover:translate-x-2 group-hover:translate-y-2 group-hover:rotate-12
+               transition-all duration-75 ease-in"
                   />
                 </Link>
               </li>

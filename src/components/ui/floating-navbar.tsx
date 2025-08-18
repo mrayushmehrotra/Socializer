@@ -1,15 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { FiMenu } from "react-icons/fi"; // hamburger icon
+import { IoClose } from "react-icons/io5"; // close icon
+import { usePathname } from "next/navigation";
 
-export const FloatingNav = ({
+const SidebarNav = ({
   navItems,
   className,
 }: {
@@ -19,39 +17,77 @@ export const FloatingNav = ({
   }[];
   className?: string;
 }) => {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        initial={{
-          opacity: 1,
-        }}
-        transition={{
-          duration: 0.2,
-        }}
-        className={cn(
-          "flex max-w-fit  fixed top-10 inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center justify-center space-x-4",
-          className,
-        )}
+    <>
+      {/* Hamburger Button */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="p-2 rounded-lg shadow-lg bg-black/70 border border-white/10 hover:scale-110 transition"
       >
-        {navItems.map((navItem: any, idx: number) => (
-          <a
-            key={`link=${idx}`}
-            href={navItem.link}
+        {open ? (
+          <IoClose className="w-6 h-6 text-white" />
+        ) : (
+          <FiMenu className="w-6 h-6 text-white" />
+        )}
+      </button>
+
+      {/* Sidebar */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ x: -250, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -250, opacity: 0 }}
+            transition={{ duration: 0.3 }}
             className={cn(
-              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500",
+              "fixed top-0 left-0 h-full w-64 z-[5000] flex flex-col space-y-6 px-6 py-10",
+              "bg-gradient-to-b from-gray-900 via-black to-gray-950 backdrop-blur-xl shadow-2xl border-r border-white/10",
+              className,
             )}
           >
-            <span className="hidden sm:block text-sm">{navItem.name}</span>
-          </a>
-        ))}
-        <Link
-          href="/"
-          className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
-        >
-          <span>Home</span>
-          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </Link>
-      </motion.div>
-    </AnimatePresence>
+            <h2 className="text-lg font-semibold text-white tracking-wide mb-6">
+              Menu
+            </h2>
+
+            {navItems.map((navItem: any, idx: number) => {
+              const isActive = pathname === navItem.link; // ✅ check path
+              return (
+                <Link
+                  key={`link-${idx}`}
+                  href={navItem.link}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "relative flex items-center rounded-full px-6 py-3 text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-gray-700 text-white shadow-md" // Active state
+                      : "text-gray-300 hover:text-white hover:bg-gray-800/60",
+                  )}
+                >
+                  {navItem.name}
+                </Link>
+              );
+            })}
+
+            <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              className={cn(
+                "relative flex items-center rounded-full px-6 py-3 text-sm font-medium transition-colors",
+                pathname === "/"
+                  ? "bg-gray-700 text-white shadow-md"
+                  : "text-gray-300 hover:text-white hover:bg-gray-800/60",
+              )}
+            >
+              Home
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
+
+export default SidebarNav;

@@ -114,7 +114,11 @@ const Navbar = () => {
             </li>
             <li>
               <Link href={isUser ? "/dashboard" : "/sign-up"}>
-                <button className="bg-[#BAD7F5] hover:scale-95 text-black px-4 py-2 rounded-xl shadow-md transition-all duration-200">
+                <button
+                  className="px-6 py-3 rounded-xl text-white font-semibold 
+                     bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                     shadow-lg hover:opacity-90 transition"
+                >
                   {isUser ? "Dashboard" : "Get Started"}
                 </button>
               </Link>
@@ -164,7 +168,11 @@ const Navbar = () => {
                   href={isUser ? "/dashboard" : "/sign-up"}
                   onClick={() => setIsOpen(false)}
                 >
-                  <button className="bg-[#BAD7F5] hover:scale-95 text-black px-4 py-2 rounded-xl shadow-md transition-all duration-200">
+                  <button
+                    className="px-6 py-3 rounded-xl text-white font-semibold 
+                     bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                     shadow-lg hover:opacity-90 transition"
+                  >
                     {isUser ? "Dashboard" : "Get Started"}
                   </button>
                 </Link>

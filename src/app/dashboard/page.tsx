@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import DashboardCard from "@/components/myComponents/DashboardCard";
 import Navbar from "@/components/myComponents/Navbar";
+import { FileText, Hash, Type } from "lucide-react";
 
 const Page = () => {
   const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ const Page = () => {
           "Unlock the potential of your content with a captivating SEO-friendly title that draws viewers to your YouTube videos,posts, and other social media platforms.",
       },
       goto: "/dashboard/getTitle",
+      icon: Type,
     },
     {
       title: {
@@ -31,6 +33,7 @@ const Page = () => {
           "Boost your visibility online with an engaging SEO-friendly description that highlights your content's value, helping attract more viewers across platforms.",
       },
       goto: "/dashboard/getDescription",
+      icon: FileText,
     },
     {
       title: {
@@ -41,12 +44,14 @@ const Page = () => {
           "Enhance your reach and discoverability by generating effective SEO-friendly hashtags that resonate with your target audience on social media.",
       },
       goto: "/dashboard/getHashtags",
+      icon: Hash,
     },
   ];
 
   return (
     <>
       <Navbar />
+      <div className="mt-8"></div>
       <div className="w-full pt-24 p-2   flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  ">
           {loading
@@ -62,6 +67,7 @@ const Page = () => {
                   about={item.title.description}
                   CardTitle={item.title.main}
                   link={item.goto}
+                  icon={item.icon}
                 />
               ))}
         </div>

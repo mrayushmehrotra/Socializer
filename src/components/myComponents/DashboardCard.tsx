@@ -3,17 +3,20 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { LucideIcon } from "lucide-react";
 
 interface Props {
   CardTitle: string;
   about: string;
   link: string;
   origin: string;
+  icon: LucideIcon;
 }
 
-const DashboardCard = ({ CardTitle, about, link, origin }: Props) => {
+const DashboardCard = ({ CardTitle, about, link, origin, icon }: Props) => {
   const [displayOrigin, setDisplayOrigin] = useState(origin);
 
+  const Icon = icon;
   // helper to generate random letters
   const getRandomChar = () => {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -44,7 +47,8 @@ const DashboardCard = ({ CardTitle, about, link, origin }: Props) => {
   return (
     <div
       onMouseEnter={handleHover}
-      className="w-full sm:max-w-[70%]  md:max-w-md lg:max-w-lg border border-zinc-700 rounded-xl shadow-lg overflow-hidden mx-auto transition-transform duration-300 hover:scale-105"
+      className="w-full bg-gradient-to-br from-zinc-800 via-zinc-900 to-black
+  sm:max-w-[70%]  md:max-w-md lg:max-w-lg border border-zinc-700 rounded-xl shadow-lg overflow-hidden mx-auto transition-transform duration-300 hover:scale-105"
     >
       <Link href={link}>
         <div className="flex flex-col px-4 sm:px-6 py-4">
@@ -54,8 +58,8 @@ const DashboardCard = ({ CardTitle, about, link, origin }: Props) => {
           </div>
 
           {/* Main Card Title */}
-          <div className="text-lg text-white font-semibold mt-1">
-            {CardTitle}
+          <div className=" flex gap-x-4 text-md font-semibold ">
+            {CardTitle} <Icon />
           </div>
         </div>
 
@@ -63,12 +67,10 @@ const DashboardCard = ({ CardTitle, about, link, origin }: Props) => {
           <div className="text-sm text-gray-300">{about}</div>
         </div>
 
-        <div className="flex justify-between items-center pt-4 border-t border-gray-600 p-4">
-          <div className="flex items-center space-x-4">
-            <Button className="bg-transparent text-white border-2 border-white rounded-lg hover:bg-white hover:text-black transition-all duration-300">
-              <h1 className="text-[15px] sm:text-[17px]">Go</h1>
-            </Button>
-          </div>
+        <div className="flex items-center p-4 space-x-4">
+          <Button className="px-4 py-2 text-white border-2 border-white rounded-lg hover:bg-white hover:text-black transition-all duration-300">
+            Go
+          </Button>
         </div>
       </Link>
     </div>

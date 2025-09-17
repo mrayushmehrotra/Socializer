@@ -9,7 +9,7 @@ const Footer = () => {
         {/* Brand Info */}
         <div>
           <h1 className="text-3xl font-bold text-white">
-            Socializer<span className="text-blue-500">.ai</span>
+            Socializer<span className="text-indigo-400">.ai</span>
           </h1>
           <p className="mt-4 text-sm leading-6 text-gray-400">
             Empowering every video creator with insights <br /> and inspiration

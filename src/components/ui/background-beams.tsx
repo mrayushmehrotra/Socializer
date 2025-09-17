@@ -104,7 +104,7 @@ export const BackgroundBeams = React.memo(
                   x1: ["0%", "100%"],
                   x2: ["0%", "95%"],
                   y1: ["0%", "100%"],
-                  y2: ["0%", `${93 + Math.random() * 8}%`],
+                  y2: ["0%", `${93 + Math.random() * 5}%`],
                 }}
                 transition={{
                   duration: Math.random() * 10 + 10,
@@ -113,10 +113,11 @@ export const BackgroundBeams = React.memo(
                   delay: Math.random() * 10,
                 }}
               >
-                <stop stopColor="#18CCFC" stopOpacity="0"></stop>
-                <stop stopColor="#18CCFC"></stop>
-                <stop offset="32.5%" stopColor="#6344F5"></stop>
-                <stop offset="100%" stopColor="#AE48FF" stopOpacity="0"></stop>
+                <stop stopColor="#FF3B3B" stopOpacity="0"></stop>{" "}
+                <stop stopColor="#FF3B3B"></stop> {/* 🔴 Red core */}
+                <stop offset="32.5%" stopColor="#7C3AED"></stop>{" "}
+                <stop offset="100%" stopColor="#22C55E" stopOpacity="0"></stop>{" "}
+                {/* 🟢 Green end */}
               </motion.linearGradient>
             ))}
 
